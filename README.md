@@ -1,6 +1,13 @@
 # sotodo
 
-> My perfect Nuxt.js project
+## アプリ概要
+- 機能
+　-投稿機能
+　-完了（done )の切り替え
+　-削除機能
+- 使用技術
+　- nuxtjs
+  -firebase
 
 ## Build Setup
 

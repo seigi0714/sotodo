@@ -1,6 +1,7 @@
 
 export default {
-  mode: 'spa',
+  srcDir: 'app',
+  mode: 'universal',
   /*
   ** Headers of the page
   */
@@ -40,6 +41,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/dotenv'
   ],
   /*
   ** Build configuration
