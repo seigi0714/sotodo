@@ -1,4 +1,4 @@
-
+const webpack = require('webpack')
 export default {
   srcDir: 'app',
   mode: 'universal',
@@ -24,7 +24,8 @@ export default {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    { src: '~/assets/sass/app.scss', lang: 'scss' },
   ],
   /*
   ** Plugins to load before mounting the App
@@ -52,6 +53,11 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+      })
+    ]
   }
 }

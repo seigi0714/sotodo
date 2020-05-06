@@ -8,6 +8,18 @@ export const state = () => ({
     todos: []
 })
 
+export const getters = {
+    orderdTodos: state => {
+        return _.sortBy(state.todos, 'created')
+    },
+    doneTodos: (state, getters) => {
+        return getters.orderdTodos.filter(todo => todo.done)
+    },
+    notDoneTodos: (state, getters) => {
+        return getters.orderdTodos.filter(todo => !todo.done)
+    }
+}
+
 export const actions = {
     init: firestoreAction(({ bindFirestoreRef }) => {
         bindFirestoreRef('todos',todosRef)
@@ -17,7 +29,7 @@ export const actions = {
             todosRef.add({
                 name: name,
                 done: false,
-                create: firebase.firestore.FieldValue.serverTimestamp()
+                created: firebase.firestore.FieldValue.serverTimestamp()
             })
         }
     }),
