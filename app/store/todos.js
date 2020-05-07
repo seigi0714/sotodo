@@ -29,7 +29,8 @@ export const actions = {
             todosRef.add({
                 name: name,
                 done: false,
-                created: firebase.firestore.FieldValue.serverTimestamp()
+                created: firebase.firestore.FieldValue.serverTimestamp(),
+                doneat: null,
             })
         }
     }),
@@ -38,7 +39,8 @@ export const actions = {
     }),
     toggle: firestoreAction((context, todo) => {
         todosRef.doc(todo.id).update({
-            done: !todosRef.done
+            done: !todosRef.done,
+            doneat: firebase.firestore.FieldValue.serverTimestamp()
         })
     })
 }
